@@ -32,7 +32,6 @@ May 27 2002 Michael Selig, m-selig@uiuc.edu
   </systems> 
   
   <sound>
-   <audible>true</audible>
    <path>Aircraft/marchetti/Sounds/uiuc/marchetti-sound.xml</path>
   </sound>
 
