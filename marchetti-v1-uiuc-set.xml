@@ -20,6 +20,7 @@ May 27 2002 Michael Selig, m-selig@uiuc.edu
  <sim>
 
   <description>Siai Marchetti S.211 (UIUC)</description>
+  <author>Michael Selig</author>
 
   <flight-model>larcsim</flight-model>
   <aero>uiuc</aero>
