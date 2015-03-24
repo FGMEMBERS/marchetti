@@ -24,7 +24,6 @@ May 27 2002 Michael Selig, m-selig@uiuc.edu
 
   <flight-model>larcsim</flight-model>
   <aero>uiuc</aero>
-  <aircraft-dir>Aircraft/UIUC/marchetti-v1</aircraft-dir>
 
   <sound>
    <path>Aircraft/marchetti/Sounds/uiuc/marchetti-sound.xml</path>
