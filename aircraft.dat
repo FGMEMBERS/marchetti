@@ -1,0 +1,134 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Aircraft:
+# SIAI-Marchetti S-211
+# Cruise configuration
+#
+# File name:
+# marchetti-v1
+#
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Authors:
+#
+# Michael Selig
+# http://www.uiuc.edu/~m-selig
+# 2000/02/10   initial creation using
+#              "Small, single jet engine, military trainer" data from:
+#              Roskam, J., Airplane Flight Dynamics and Automatic Flight
+#              Controls, Part I, DARcorporation, Lawrence, KS, 1995,
+#              pg 494-496
+# 2002/02/24   added gear
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# Notes:
+# - constant stability derivatives, no nonlinear aero
+# - approximate gear data
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# References:
+#
+# - Roskam, J., Airplane Flight Dynamics and Automatic Flight
+#   Controls, Part I, DARcorporation, Lawrence, KS, 1995,
+#   pg 494-496
+#
+# - Additional models and updates 
+#   http://amber.aae.uiuc.edu/~m-selig/apasim.html
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# various "init" FGFS settings
+init use_V_rel_wind_2U    
+init use_dyn_on_speed_curve1    
+init dyn_on_speed  2    
+init dyn_on_speed_zero 1    
+init use_Alpha_dot_on_speed 7   # [ft/sec] speed below which Alpha_dot is set to zero    
+init use_gamma_horiz_on_speed 15 # [ft/sec] speed above which Gamma_horiz_deg is used in chase view [1]
+
+#init Dz_cg     2.5      # [ft]
+
+geometry bw    26.3     # [ft]
+geometry cbar   5.4     # [ft]
+geometry Sw   136.0     # [ft^2]
+
+controlSurface de 20 20 # [deg]  guess for now
+controlSurface da 20 20 # [deg]  guess for now
+controlSurface dr 20 20 # [deg]  guess for now
+
+mass Weight  4000       # [lb]
+mass I_xx     800       # [slug-ft^2]
+mass I_yy    4800       # [slug-ft^2]
+mass I_zz    5200       # [slug-ft^2]
+mass I_xz     200       # [slug-ft^2]
+
+# Roskam: CTx=0.022 (cruise conditions) --> 600 lb
+# aircraft specs: 2500 lb static thrust
+engine simpleSingle 2100 # [lb]
+
+CL CLo      0.149       # []
+CL CL_a     5.50        # [/rad]
+CL CL_adot  4.2         # [/rad]
+CL CL_q    10.0         # [/rad]
+CL CL_de    0.38        # [/rad]
+
+CD CDo      0.0205      # []
+#CD CDK                  # []
+CD CD_a     0.12        # [/rad]
+CD CD_de    0.0         # [/rad]
+
+#Cm Cmo     -0.08        # []  Roskam value
+Cm Cmo     -0.007       # []   Changed for trim at cruise speed
+Cm Cm_a    -0.24        # [/rad]
+Cm Cm_adot -9.6         # [/rad]
+Cm Cm_q   -17.7         # [/rad]
+Cm Cm_de   -0.88        # [/rad]
+
+CY CY_beta -1.00        # [/rad]
+CY CY_p    -0.140       # [/rad]
+CY CY_r     0.61        # [/rad]
+CY CY_da    0.0         # [/rad]    sign reversed
+CY CY_dr    0.0280      # [/rad]
+
+Cl Cl_beta -0.110       # [/rad]
+Cl Cl_p    -0.390       # [/rad]
+Cl Cl_r     0.280       # [/rad]
+Cl Cl_da   -0.100       # [/rad]    sign reversed
+Cl Cl_dr    0.050       # [/rad]
+
+Cn Cn_beta 0.170        # [/rad]
+Cn Cn_p    0.090        # [/rad]
+Cn Cn_r   -0.260        # [/rad]
+Cn Cn_da   0.003        # [/rad]    sign reversed
+Cn Cn_dr  -0.120        # [/rad]
+
+# nose wheel (must be position 0 if present)
+gear Dx_gear 0  7.5     # x-offset from CG [ft]
+gear Dy_gear 0 0        # y-offset from CG [ft]
+gear Dz_gear 0 4.5      # z-offset from CG [ft]
+gear cgear 0  500       # damping [lbs/ft/sec]
+gear kgear 0 1100       # springiness [lbs/ft]
+gear muGear 0 0.01      # rolling coefficient
+gear strutLength 0 -0.5 # gear travel [ft] (not yet used)
+
+# right gear (must be position 1 if present)
+gear Dx_gear 1 -3.9     # [ft]
+gear Dy_gear 1 8.25     # [ft]
+gear Dz_gear 1 5        # [ft]
+gear cgear 1  500       # [lbs/ft/sec]
+gear kgear 1  900       # [lbs/ft]
+gear muGear 1 0.01      # rolling coefficient
+gear strutLength 1 2.5  # [ft]
+
+# left gear (must be position 2 if present)
+gear Dx_gear 2 -3.9     # [ft]
+gear Dy_gear 2 -8.25    # [ft]
+gear Dz_gear 2 5        # [ft]
+gear cgear 2  500       # [lbs/ft/sec]
+gear kgear 2  900       # [lbs/ft]
+gear muGear 2 0.01      # rolling coefficient
+gear strutLength 2 2.5  # [ft]
+
+*
