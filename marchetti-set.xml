@@ -2,6 +2,8 @@
 
 <PropertyList include="marchetti-v1-uiuc-set.xml">
  <sim>
+   <exclude-from-gui type="bool">true</exclude-from-gui>
+   
   <description>Alias for marchetti-v1-uiuc.</description>
  </sim>
 </PropertyList>
